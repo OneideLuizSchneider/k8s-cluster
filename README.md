@@ -23,7 +23,6 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 kubectl version
 
-
 ```
 **step 2** \
 Add the workers
@@ -35,14 +34,14 @@ kubectl get nodes
 
 ```
 **step 3** \
-Install the k8s network, in this cluster we used flannel. After this step we can see the nodes all ready.
+Install the k8s network, in this cluster we used a flannel. After this step, we can see the nodes all ready.
 ```
 echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
 
-#here you can see all the nodes
+#here you can see all the nodes ready
 kubectl get nodes
 
 ```

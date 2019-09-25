@@ -1,4 +1,4 @@
-# k8s-cluster
+# kubernetes Cluster
 Setup Kubernetes cluster, step by step
 
 Make sure you have docker on your machine.

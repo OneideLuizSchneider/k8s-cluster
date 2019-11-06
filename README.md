@@ -45,6 +45,12 @@ sudo sysctl -p
 
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
 
+*If you have problems with this commnand above, you try this one:
+curl -o kube-flannel.yml https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+sed -i "s/quay.io\/coreos\/flannel/quay-mirror.qiniu.com\/coreos\/flannel/g" kube-flannel.yml
+kubectl apply -f kube-flannel.yml
+rm -f kube-flannel.yml
+
 #here you can see all the nodes ready
 kubectl get nodes
 

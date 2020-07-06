@@ -1,4 +1,4 @@
-# kubernetes Cluster
+# kubernetes installation
 Setup Kubernetes cluster, step by step
 
 Make sure you have docker on your machine.
@@ -14,7 +14,10 @@ EOF
 
 sudo apt-get update
 
-sudo apt-get install -y kubelet=1.12.7-00 kubeadm=1.12.7-00 kubectl=1.12.7-00
+# with an specifc version
+# sudo apt-get install -y kubelet=1.12.7-00 kubeadm=1.12.7-00 kubectl=1.12.7-00
+# latest version
+sudo apt-get install -y kubelet kubeadm kubectl
 
 sudo apt-mark hold kubelet kubeadm kubectl
 

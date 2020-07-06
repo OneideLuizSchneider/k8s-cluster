@@ -3,6 +3,30 @@ Setup Kubernetes cluster, step by step
 
 Make sure you have docker on your machine.
 
+*Note: if you will use the last version of k8s, first make sure you have configured cgroups on docker.*
+
+```
+
+# Set up the Docker daemon
+cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2"
+}
+EOF
+
+mkdir -p /etc/systemd/system/docker.service.d
+
+# Restart Docker
+systemctl daemon-reload
+systemctl restart docker
+
+```
+
 **step 1** \
 Install k8s (the version you can change if you want)
 ```

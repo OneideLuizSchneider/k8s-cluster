@@ -67,7 +67,7 @@ kubectl get nodes
 
 ```
 **step 3** \
-Install the k8s network, in the official k8s page we can see all the options, here I show two k8s networks, calico and flannel, just use one of them. After this step, we can see the nodes all ready.
+Install the k8s network, in the official k8s page we can see all the options, here I show two networks, calico and flannel, just use one of them. After this step, we can see the nodes all ready.
 ```
 echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p

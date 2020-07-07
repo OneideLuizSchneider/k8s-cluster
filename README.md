@@ -3,7 +3,7 @@ Setup Kubernetes cluster, step by step
 
 Make sure you have docker on your machine.
 
-*Note: To set cgroups on docker, it's optional.*
+*Note: To set up cgroups on Docker, it's optional.*
 
 ```
 # Set up the Docker daemon

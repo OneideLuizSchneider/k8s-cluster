@@ -3,10 +3,9 @@ Setup Kubernetes cluster, step by step
 
 Make sure you have docker on your machine.
 
-*Note: if you will use the last version of k8s, first make sure you have configured cgroups on docker.*
+*Note: To set cgroups on docker, it's optional.*
 
 ```
-
 # Set up the Docker daemon
 cat > /etc/docker/daemon.json <<EOF
 {
@@ -24,7 +23,6 @@ mkdir -p /etc/systemd/system/docker.service.d
 # Restart Docker
 systemctl daemon-reload
 systemctl restart docker
-
 ```
 
 **step 1** \
@@ -69,18 +67,21 @@ kubectl get nodes
 
 ```
 **step 3** \
-Install the k8s network, in this cluster we used a flannel. After this step, we can see the nodes all ready.
+Install the k8s network, in the official k8s page we can see all the options, here I show two k8s networks, calico and flannel, just use one of them. After this step, we can see the nodes all ready.
 ```
 echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
-
 *If you have problems with this commnand above, you try this one:
 curl -o kube-flannel.yml https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 sed -i "s/quay.io\/coreos\/flannel/quay-mirror.qiniu.com\/coreos\/flannel/g" kube-flannel.yml
 kubectl apply -f kube-flannel.yml
 rm -f kube-flannel.yml
+
+# calico network
+curl https://docs.projectcalico.org/manifests/canal.yaml -O
+kubectl apply -f canal.yaml
 
 #here you can see all the nodes ready
 kubectl get nodes

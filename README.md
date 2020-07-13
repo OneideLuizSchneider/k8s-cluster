@@ -87,6 +87,6 @@ kubectl apply -f canal.yaml
 kubectl get nodes
 
 ```
-
+<img src="https://github.com/OneideLuizSchneider/k8s-cluster/blob/master/ready.png?raw=true" width="400">
 
 Enjoy it :D

@@ -44,7 +44,7 @@ sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 
 #init master
-sudo kubeadm init --pod-network-cidr=10.138.216.179/16 --apiserver-advertise-address=10.138.0.0
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 
 #--apiserver-advertise-address = determines which IP address Kubernetes should advertise its API server on.
 #--pod-network-cidr = specify the range of IP addresses for the pod network. We're using the 'flannel' virtual network.
